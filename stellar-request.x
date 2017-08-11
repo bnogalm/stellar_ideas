@@ -106,18 +106,21 @@ union RequestParameter switch (RequestParameterType)
 {
 	case ACCOUNT_PRIVATE: 
 	PrivateKey privateKey;
-	
+
 	case STELLAR_ADDRESS: 
 	string256 federationAddress; 
-	
+
 	case ACCOUNT_ID: 
 	AccountID publicKey;
-	
+
 	case ACCOUNT_MEMO: 
 	Memo memo;
-	
+
 	case ACCOUNT_DATA: 
 	AccountDataType accountData;
+
+	case REQUEST_DATA: 
+	RequestData requestData;
 
 	case REMOTE_DATA: 
 	string256 url;	
