@@ -97,7 +97,10 @@ enum RequestParameterType
 	REQUEST_DATA =6,		//extra information about the operation contained in this request.
 	REMOTE_DATA = 7,		//url that will return information for this request, reply must be base64 of a RequestEnvelope.
 	REQUESTED_OPERATION_HINT =8,  //hint to decide what we want with these parameters.
-	OPERATION = 9 //xdr operation, can be up to 100 in the same request.
+	OPERATION = 9, //xdr operation, can be up to 100 in the same request.
+	TRANSACTION = 10,	//xdr transaction
+	SIGNED_TRANSACTION = 11,	//xdr signed transaction
+	SIGNATURE = 12		//xdr DecoratedSignature
 };
 
 
@@ -130,6 +133,16 @@ union RequestParameter switch (RequestParameterType)
 
 	case OPERATION: 
 	Operation operation;
+	
+	case TRANSACTION: 
+	Transaction transaction;
+	
+	case SIGNED_TRANSACTION: 
+	TransactionEnvelope signedTransaction;
+	
+	case SIGNATURE:
+	DecoratedSignature signature;
+	
 };
 
 //struct containing a list of request parameters. 
